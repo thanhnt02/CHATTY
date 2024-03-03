@@ -1,0 +1,57 @@
+.h-content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid #ece9e9;
+
+  &__title{
+    display: flex;
+    align-items: center;
+    img{
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      margin-right: 15px;
+    }
+
+    &-name{
+      font-weight: 600;
+      font-size: 16px;
+    }
+  }
+}
+
+.f-content{
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-top: 1px solid #ece9e9;
+}
+
+.icon{
+  &__emoji{
+    margin-left: 10px;
+    border: 0;
+    background: none;
+  }
+  &__file{
+    margin-left: 10px;
+    border: 0;
+    background: none;
+  }
+  &__send{
+    margin-left: 10px;
+    border: 0;
+    background: none;
+    width: 80px!important;
+  }
+}
+
+.btn{
+  margin-left: 15px;
+  border: 0;
+  background: none;
+}
+

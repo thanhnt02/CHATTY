@@ -1,0 +1,109 @@
+@import "../../base";
+
+.welcome-header{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #fff;
+  // position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.welcome-header .welcome-header__wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.welcome-header .welcome-header__logo{
+  width: 120px;
+  aspect-ratio: 80/41;
+}
+
+.welcome-header .welcome-header__logo img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.welcome-header .welcome-header__item ul{
+  display: flex;
+}
+
+.welcome-header .welcome-header__item ul li{
+  font-size: 16px;
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+/* End Header */
+
+/* Button */
+.button--one{
+  border: 1px solid;
+  background: white;
+  min-height: 44px;
+  padding: 13px 50px;
+  border-radius: 22px;
+}
+
+.button--one:hover{
+  background: #000;
+  color: #fff;
+}
+
+.button--two{
+  border: 1px solid #000;
+  background: #000;
+  color: white;
+  min-height: 44px;
+  padding: 13px 50px;
+  border-radius: 22px;
+  // background: #F5F5F5
+}
+
+.button--two:hover{
+  border: 1px solid #000;
+  color: #000;
+  background: #fff;
+}
+/* End Button */
+
+// Welcome
+
+.welcome-section{
+  height: calc(100vh - 84.4px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+
+  &__title{
+    font-size: 66px;
+    line-height: 76px;
+    max-width: 634px;
+    color: #C8001A;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__desc{
+    font-size: 22px;
+    line-height: 140%;
+    color: #121212;
+    font-weight: 600;
+    margin-bottom: 50px;
+    text-align: center
+  }
+
+  &__image{
+    display: flex;
+
+    & img{
+      width: 100%;
+      align-items: center;
+      border-radius: 20px;
+    }
+  }
+
+}
+
+// End Welcome

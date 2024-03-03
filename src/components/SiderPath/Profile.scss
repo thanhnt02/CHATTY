@@ -1,0 +1,73 @@
+@import "../../base";
+
+.profile{
+  
+  &__header{
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+
+    &-name{
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    &-btn{
+      border: 0;
+      background: #F5F7FB;
+    }
+  }
+
+  &__avatar{
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ece9e9;
+
+    img{
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+    }
+
+    &-name{
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    &-isActive{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15px;
+
+      .icon{
+        margin-right: 10px;
+        color: #07ff13;
+        display: flex;
+        align-items: center;
+      }
+
+      .isActive{
+        color: var(--color-text-second);
+      }
+    }
+  }
+  &__about{
+    padding: 20px;
+    margin-top: 20px;
+
+    &-title{
+      font-size: 15px;
+      color: var(--color-text-second);
+    }
+
+    &-content{
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+  }
+}

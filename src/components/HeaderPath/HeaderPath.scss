@@ -1,0 +1,54 @@
+@import "../../base";
+
+.header{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+
+  &__logo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: #C8001A;   
+  }
+
+  &__menu{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & li{
+      padding-top: 30px!important;
+      padding-bottom: 30px!important;
+    }
+
+    & ul li .ant-menu-item-icon{
+      font-size: 20px!important;
+    }
+  }
+
+  &__avatar{
+    margin-bottom: 25px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+}
+
+
+

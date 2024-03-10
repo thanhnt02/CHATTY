@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "4b82",
+      "familyName": "Nguyễn",
+      "firstName": "Thành",
+      "email": "test@gmail.com",
+      "password": "121"
+    },
+    {
+      "id": "b758",
+      "familyName": "Nguyễn",
+      "firstName": "Thành",
+      "email": "test1@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "83e8",
+      "familyName": "Nguyễn",
+      "firstName": "Thành",
+      "email": "test2@gmail.com",
+      "password": "121212"
+    }
+  ]
+}

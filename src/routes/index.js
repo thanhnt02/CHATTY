@@ -22,16 +22,16 @@ export const routes = [
       {
         path: "register",
         element: <Register/>
+      },
+      {
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "dashboard",
+            element: <LayoutDefault/>
+          }
+        ]
       }
-      // {
-      //   path: "dashboard",
-      //   element: <LayoutDefault/>
-      // }
     ]
-  },
-  {
-    path: "dashboard",
-    element: <LayoutDefault/>
   }
-
 ]

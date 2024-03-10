@@ -1,11 +1,10 @@
 import { Layout, Row, Col } from "antd";
 import "./Register.scss";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, notification  } from "antd";
 import { Link } from "react-router-dom";
+import { addUser } from "../../services/userServices";
 
-const onFinish = (values) => {
-  console.log("Success:", values);
-};
+
 const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
 };
@@ -16,8 +15,35 @@ const style = {
 const { Content } = Layout;
 
 function Register() {
+  const [form] = Form.useForm()
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = () => {
+    api.success({
+      message: 'Tạo tài khoản thành công',
+      description:
+        'Đăng nhập với tài khoản đã được tạo!',
+      duration: 3,
+    });
+  };
+
+
+  const sendAPI = async (data) => {
+    const result = await addUser(data);
+    if (result) {
+      console.log("OK");
+    }
+  }
+
+  const onFinish = (data) => {
+    openNotification();
+    delete data["confirmPassword"];
+    sendAPI(data);
+    form.resetFields();
+  };
+
   return (
     <>
+      {contextHolder}
       <Layout>
         <Content style={{background: "#fff"}}>
           <Row style={style} className="register" justify={"center"}>
@@ -46,10 +72,45 @@ function Register() {
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
                 layout="vertical"
+                form={form}
               >
+
+                <Row gutter={10}>
+                  <Col xl={12}>
+                    <Form.Item
+                    label="Họ"
+                    name="familyName"
+                    rules={[
+                      {
+                        type: "text",
+                        required: true,
+                        message: "Nhập họ của bạn!",
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+                  </Col>
+                  <Col xl={12}>
+                    <Form.Item
+                    label="Tên"
+                    name="firstName"
+                    rules={[
+                      {
+                        type: "text",
+                        required: true,
+                        message: "Nhập tên của bạn!",
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+                  </Col>
+                </Row>
+
                 <Form.Item
                   label="Email"
-                  name="username"
+                  name="email"
                   rules={[
                     {
                       type: "email",
@@ -69,6 +130,28 @@ function Register() {
                       required: true,
                       message: "Nhập mật khẩu của bạn!",
                     },
+                  ]}
+                >
+                  <Input.Password />
+                </Form.Item>
+
+                <Form.Item
+                  label="Xác nhận mật khẩu"
+                  name="confirmPassword"
+                  dependencies={['password']}
+                  rules={[
+                    {
+                      message: "Gõ lại mật khẩu của bạn!",
+                      required: true,
+                    },
+                    ({ getFieldValue }) => ({
+                      validator(_, value) {
+                        if (!value || getFieldValue('password') === value) {
+                          return Promise.resolve();
+                        }
+                        return Promise.reject(new Error('Mật khẩu chưa khớp!'));
+                      },
+                    }),
                   ]}
                 >
                   <Input.Password />

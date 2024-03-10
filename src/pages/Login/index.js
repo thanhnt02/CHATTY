@@ -1,8 +1,13 @@
 import { Layout, Row, Col } from "antd";
 import "./Login.scss";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, notification } from "antd";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { getUserList } from "../../services/userServices";
+import { useDispatch } from "react-redux";
+import { fail, success } from "../../actions/isLogin";
+
+
 
 const onFinishFailed = (errorInfo) => {
   console.log("Failed:", errorInfo);
@@ -14,18 +19,53 @@ const style = {
 const { Content } = Layout;
 
 function Login() {
+  const isLoginDispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  const onFinish = (values) => {
-    if (values.email === "test@gmail.com" && values.password === "123456") {
-      console.log("OK");
-      navigate("/dashboard");
-    }
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = () => {
+    api.error({
+      message: 'Đăng nhập thất bại',
+      description:
+        'Nhập lại email và password của bạn',
+      duration: 3,
+    });
   };
+
+  const onFinish = async (values) => {
+    const result = await getUserList();
+    const isLoginEmail = result.find((item) => {
+      return item.email === values.email;
+    })
+    // console.log(isLoginEmail);
+    if (isLoginEmail) {
+      const isLoginPassword = [isLoginEmail].some((item) => {
+        return item.password === values.password;
+      })
+      if (isLoginPassword) {
+        console.log("OK");
+        isLoginDispatch(success());
+        navigate('/dashboard')
+      }
+      else {
+        console.log("fail");
+        openNotification();
+        isLoginDispatch(fail());
+      }
+    } else {
+      console.log("fail");
+      isLoginDispatch(fail());
+    }
+    
+    // if (isLoginEmail && isLoginPassword) {
+    //   console.log("OK");
+    // } else console.log("Fail")
+  }
 
   return (
     <>
+      {contextHolder}
       <Layout>
         <Content style={{background: "#fff"}}>
           <Row style={style} className="login" justify={"center"}>

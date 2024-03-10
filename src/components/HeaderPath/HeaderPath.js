@@ -54,8 +54,8 @@ function HeaderPath(props) {
             className="menu"
             mode="inline"
             items={items}
-            defaultSelectedKeys={["chat"]}
-            defaultOpenKeys={["chat"]}
+            defaultSelectedKeys={["chats"]}
+            defaultOpenKeys={["chats"]}
           />
         </div>
         <div className="header__avatar">
